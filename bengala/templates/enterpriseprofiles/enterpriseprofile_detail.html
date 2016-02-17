@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+	{% load staticfiles %}
+	<meta charset="UTF-8">
+	<title>Detalle de Empresas</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+</head>
+<body>
+	<img src="{{ enterpriseprofile.profileImage.url }}">
+	<h1>{{ enterpriseprofile.companyName }}</h1>
+	<h2> {{ enterpriseprofile.descriptor }}</h2>
+	<p> {{ enterpriseprofile.industry }} </p>
+	<p> {{ enterpriseprofile.us }} </p>
+	<p> {{ enterpriseprofile.legalId }} </p>
+	<p> {{ enterpriseprofile.email }} </p>
+	<p> {{ enterpriseprofile.web }} </p>
+	<p> {{ enterpriseprofile.address }} </p>
+
+
+</body>
+</html>

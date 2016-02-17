@@ -1,0 +1,39 @@
+body{
+	font-family: 'helvetica';
+	font-weight: 400;
+
+}
+
+h1{
+	font-size: 18px;
+	color: #151515;
+}
+
+ul li{
+	text-decoration: none;
+	list-style: none;
+	border: solid 2px #FF0000;
+	width: 600px;
+	padding: 5px;
+	margin: 5px auto;
+	height: 160px;
+	background-color: #FAFAFA;
+	border-radius: 5px
+}
+
+h2 h3{
+	color: #2E2E2E;
+	font-size: 16px;
+}
+
+img{
+	height: 150px;
+	float: right;
+}
+a{
+	text-decoration: none;
+}
+p{
+	color: #2E2E2E;
+	font-size: 14px;
+}
