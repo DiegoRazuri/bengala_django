@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-
-	{% load staticfiles %}
-	<meta charset="UTF-8">
-	<title>BUSCADOR</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
-</head>
-<body>
+{% extends "index.html" %}
+{% block content %}
 	<h1>Lista de empresas registradas</h1>
 	<!--ESTE LINK DE ABAJO DEBE MOSTRARSE SOLO AL USUARIO CUANDO TRABAJA EN UNA EMPRESA Y SOLO PUEDE EDITAR EL PERFIL DE LA EMPRESA A LA Q PERTENECE SIEMPRE Y CUANDO SEA EL ACCOUNT MANAGER-->
 	<a href="{% url "enterpriseprofiles:new_enterprise" %}">registrar nueva empresa</a>
@@ -21,5 +13,4 @@
 			</li>
 		{% endfor %}
 	</ul>
-</body>
-</html>
+{% endblock %}

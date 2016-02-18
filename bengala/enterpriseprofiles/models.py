@@ -11,7 +11,7 @@ class Enterpriseprofile(models.Model):
 	businessName = models.CharField(max_length=255)
 	industry = models.CharField(max_length=255)
 	legalId = models.CharField(max_length=11, unique=True)
-	phone = models.IntegerField()
+	phone = models.PositiveIntegerField()
 	email = models.EmailField(max_length=255, blank=True)
 	web = models.URLField(max_length=200, blank=True)
 	address = models.CharField(max_length=255, blank=True)

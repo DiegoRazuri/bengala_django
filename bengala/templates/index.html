@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+	{% load staticfiles %}
+	<meta charset="UTF-8">
+	<title>
+		{% if enterpriseprofile.searchKeywords %}
+			{% block page_title %}{% endblock %}
+		{% else %}
+			Bengala: red de negocios
+		{% endif %}
+	</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+</head>
+<body>
+	<header>
+		<img src="{% static 'img/Bengala_logo1.png' %}">
+	</header>
+	<section>
+		{% block content %}
+		{% endblock %}
+	</section>	
+	<footer>
+		<img src="{% static 'img/Bengala_logo2.png'%}">
+	</footer>
+</body>
+</html>
