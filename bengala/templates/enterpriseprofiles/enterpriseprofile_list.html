@@ -9,6 +9,8 @@
 </head>
 <body>
 	<h1>Lista de empresas registradas</h1>
+	<!--ESTE LINK DE ABAJO DEBE MOSTRARSE SOLO AL USUARIO CUANDO TRABAJA EN UNA EMPRESA Y SOLO PUEDE EDITAR EL PERFIL DE LA EMPRESA A LA Q PERTENECE SIEMPRE Y CUANDO SEA EL ACCOUNT MANAGER-->
+	<a href="{% url "enterpriseprofiles:new_enterprise" %}">registrar nueva empresa</a>
 	<ul>
 		{% for enterprise in object_list %}
 			<li>
