@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 from django.views.generic import ListView
@@ -8,26 +8,34 @@ from .models import Enterpriseprofile
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import EnterpriseprofileForm
+from catalogs.models import Catalog
 
 class EnterpriseprofileList(ListView):
 	model = Enterpriseprofile
 
-class EnterpriseprofileDetail(DetailView):
-	model = Enterpriseprofile
-'''
-class EnterpriseprofileCreate(CreateView):
-	model = Enterpriseprofile
-	
-	def form_valid(self, form):
-		self.object = form.save(commit=False)
 
-		for enterprise in form.cleaned_data['relationship']:
-			relationship = Client()
-			relationship.client = self.object
-			relationship.enterprise = enterprise
-			relationship.save()
-		return super(ModelFormMixin, self).form_valid(form)
-'''
+def enterpriseprofile_detail(request, pk):
+	enterpriseprofile = get_object_or_404(Enterpriseprofile, pk=pk)
+	providers = Enterpriseprofile.objects.filter(relations__client__id=pk)
+	album = enterpriseprofile.catalog.all()
+	pubs_award = enterpriseprofile.award.all()
+	pubs_certification = enterpriseprofile.certification.all()
+	clients = enterpriseprofile.relations.filter(status=1)
+#	providers = enterpriseprofile.relations.filter(relations__to_enterprise__id=pk)
+	template = loader.get_template('enterpriseprofiles/enterpriseprofile_detail.html')
+	context = {
+	    'enterpriseprofile': enterpriseprofile,
+	    'album': album,
+	    'pubs_award': pubs_award,
+	    'pubs_certification': pubs_certification,
+	    'clients': clients,
+	    'providers': providers
+	}
+
+	return HttpResponse(template.render(context, request))
+
+
+
 def new_enterprise(request):
     if request.method == 'POST':
         form = EnterpriseprofileForm(request.POST, request.FILES)
@@ -44,3 +52,8 @@ def new_enterprise(request):
 	    'form': form
 	}
 	return HttpResponse(template.render(context, request))
+'''
+	consulta a la base de datos desde el shell 
+	
+	Enterpriseprofile.objects.filter(relations__client__id=1)
+'''

@@ -13,7 +13,86 @@
 	<p> {{ enterpriseprofile.us }} </p>
 	<p> {{ enterpriseprofile.legalId }} </p>
 	<p> {{ enterpriseprofile.email }} </p>
-	<p> {{ enterpriseprofile.web }} </p>
+	{% if enterpriseprofile.web %}
+		<a target="_blank" href="{{ enterpriseprofile.web }}">web</a>
+	{% endif %}
 	<p> {{ enterpriseprofile.address }} </p>
+	{% if enterpriseprofile.facebookURL %}
+		<a target="_blank" href="{{ enterpriseprofile.facebookURL }}">facebook</a>
+	{% endif %}
+	{% if enterpriseprofile.twitterURL %}
+		<a target="_blank" href="{{ enterpriseprofile.twitterURL }}">twitter</a>
+	{% endif %}
+	{% if enterpriseprofile.instagramURL %}
+		<a target="_blank" href="{{ enterpriseprofile.instagramURL }}">instagram</a>
+	{% endif %}
+	{% if enterpriseprofile.youtubeURL %}
+		<a target="_blank" href="{{ enterpriseprofile.youtubeURL }}">youtube</a>
+	{% endif %}
+
+	<a href="{% url "catalogs:listado_catalogs" enterpriseprofile.id %}">catalog</a>
+	<h2>Catalogos</h2>
+	<ul>
+		{% for catalog in album %}
+			<li>
+				<img src="{{ catalog.image.url }}">
+				<h2>{{ catalog.title }}</h2>
+				<h2>{{ catalog.subtitle }}</h2>
+				<h2>{{ catalog.description }}</h2>
+				
+			</li>
+		{% endfor %}
+		
+	</ul>
+
+	<h2>Reconocimientos (cambiar)</h2>
+	<h2 style="color:grey">reconocimientos, prensa</h2>
+	<ul>
+		{% if pubs_award %}
+			{% for award in pubs_award %}
+				<li>
+					<img src="{{ award.image.url }}">
+					<h2>{{ award.title }}</h2>
+					<h2>{{ award.subtitle }}</h2>
+				</li>
+			{% endfor %}
+		{% endif %}
+	</ul>
+	
+
+	<h2 style="color:grey">certificaciones</h2>
+	<ul>
+		{% if pubs_certification %}
+			{% for certification in pubs_certification %}
+				<li>
+					<img src="{{ certification.image.url }}">
+				</li>
+			{% endfor %}
+		{% endif %}
+	</ul>
+
+	<h2 style="color:grey">Clientes</h2>
+	<ul>
+		{% if clients %}
+			{% for client in clients %}
+				<li>
+					<img src="{{ client.client.profileImage.url }}">
+					<h2>{{ client.client.companyName }}</h2>
+				</li>
+			{% endfor %}
+		{% endif %}
+	</ul>
+
+	<h2 style="color:grey">Proveedores</h2>
+	<ul>
+		{% if providers %}
+			{% for provider in providers %}
+				<li>
+					<img src="{{ provider.profileImage.url }}">
+					<h2>{{ provider.companyName }}</h2>
+				</li>
+			{% endfor %}
+		{% endif %}
+	</ul>
 
 {% endblock %}

@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'pubs.apps.PubsConfig',
+    'catalogs.apps.CatalogsConfig',
     'enterpriseprofiles.apps.EnterpriseprofilesConfig',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+{% block content_catalog %}
+	<ul>
+		{% for catalog in object_list %}
+			<li>
+				<img src="{{ catalog.image.url }}">
+				<h2>{{ catalog.title }}</h2>
+				<h2>{{ catalog.subtitle }}</h2>
+				<h2>{{ catalog.description }}</h2>
+				
+			</li>
+		{% endfor %}
+		
+	</ul>
+{% endblock %}
+
+

@@ -18,8 +18,11 @@ class Enterpriseprofile(models.Model):
 	us = models.CharField(max_length=600, blank=True)
 	offer = models.CharField(max_length=600, blank=True)
 	relationship = models.ManyToManyField('self', through='Client', blank=True, symmetrical=False, related_name='related_to',)
-#	provider = models.ManyToManyField('self', through='Provider' , symmetrical=False, related_name='related_to_provider',)
 	searchKeywords = models.CharField(max_length=180, blank=True)
+	facebookURL = models.URLField(max_length=200, blank=True)
+	twitterURL = models.URLField(max_length=200, blank=True)
+	instagramURL = models.URLField(max_length=200, blank=True)
+	youtubeURL = models.URLField(max_length=200, blank=True)
 
 	def __str__(self):
 	    return self.companyName
@@ -85,7 +88,7 @@ RELATIONSHIP_STATUSES = (
 )
 
 class Client(models.Model):
-	enterprise = models.ForeignKey(Enterpriseprofile, related_name="from_enterprise")
+	enterprise = models.ForeignKey(Enterpriseprofile, related_name="relations")
 	client = models.ForeignKey(Enterpriseprofile, related_name="to_enterprise")
 	status = models.IntegerField(choices=RELATIONSHIP_STATUSES)
 '''
